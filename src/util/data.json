@@ -1,0 +1,38 @@
+[
+    {
+        "title": "Mochila",
+        "items": [
+            {"name":"Carpa","check":true},
+            {"name":"Aislante","check":false},
+            {"name":"Bolsa de dormir","check":false},
+            {"name":"Colchoneta inflable","check":false}
+        ]
+    },
+    {
+        "title": "Higiene",
+        "items": [
+            {"name":"Toallon","check":false},
+            {"name":"Toalla","check":false},
+            {"name":"Jabon","check":false},
+            {"name":"Shampoo","check":false}
+        ]
+    },
+    {
+        "title": "Ropa",
+        "items": [
+            {"name":"Remeras","check":false},
+            {"name":"Pantalon","check":false},
+            {"name":"Boxers","check":false},
+            {"name":"Medias","check":false}
+        ]
+    },
+    {
+        "title": "Art. para comer",
+        "items": [
+            {"name":"Plato","check":false},
+            {"name":"Cuchillo","check":false},
+            {"name":"Vaso","check":false},
+            {"name":"Ollas","check":false}
+        ]
+    }
+]
