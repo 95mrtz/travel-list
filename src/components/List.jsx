@@ -1,4 +1,5 @@
-const List = ({ dataInfo, setDataInfo }) => {
+const List = ({ dataInfo, setDataInfo, show }) => {
+
 
     const onChangeCheckbox = (title, name) => {
         const itemTitle = dataInfo.find((i) => i.title === title);
@@ -28,7 +29,7 @@ const List = ({ dataInfo, setDataInfo }) => {
           <article key={items.title} className="pl-2 pr-2 flex flex-col gap-2">
             <article className="flex justify-between">
               <h2 className="text-xl font-bold">{items.title}</h2>
-              <button className="pt-1 pb-1 pl-2 pr-2 flex justify-center items-center cursor-pointer">
+              <button onClick={() => show(items.title)} className="pt-1 pb-1 pl-2 pr-2 flex justify-center items-center cursor-pointer">
                 +
               </button>
             </article>
