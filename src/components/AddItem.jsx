@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const AddItem = ({ searchTitle, dataInfo, setDataInfo, setShowModal }) => {
+const AddItem = ({ searchItem, data, setData, setShowAddItem }) => {
   const [item, setItem] = useState("");
 
   const resetForm = () => {
@@ -12,21 +12,21 @@ const AddItem = ({ searchTitle, dataInfo, setDataInfo, setShowModal }) => {
   };
 
   const addItem = () => {
-    searchTitle.items.push({ name: item, check: false });
-    const updatedData = dataInfo.map((data) => {
-      if (data.title === searchTitle.title) {
-        return { ...data, searchTitle };
+    searchItem.items.push({ name: item, check: false });
+    const updatedData = data.map((data) => {
+      if (data.title === searchItem.title) {
+        return { ...data, searchItem };
       }
       return data;
     });
-    setDataInfo(updatedData);
+    setData(updatedData);
     resetForm();
-    setShowModal(false);
+    setShowAddItem(false);
   };
 
   return (
     <section className="mb-5 flex flex-col gap-3">
-      <p>agregar algo mas a {searchTitle.title}</p>
+      <p>agregar algo mas a {searchItem.title}</p>
       <input
         type="text"
         value={item}

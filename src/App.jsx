@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import data from "./util/data.json";
+import dataJSON from "./util/data.json";
 import List from "./components/List";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -8,22 +8,22 @@ import AddItem from "./components/AddItem";
 
 function App() {
   const [count, setCount] = useState(0);
-  const [dataInfo, setDataInfo] = useState(data);
-  const [showModal, setShowModal] = useState(false);
-  const [searchTitle, setSearchTitle] = useState("");
+  const [data, setData] = useState(dataJSON);
+  const [showAddItem, setShowAddItem] = useState(false);
+  const [searchItem, setSearchItem] = useState("");
 
   useEffect(() => {
-    const checkedItems = dataInfo
+    const checkedItems = data
     .flatMap((category) => category.items) 
     .filter((item) => item.check);
 
     setCount(checkedItems.length);
-  }, [dataInfo]);
+  }, [data]);
 
-  const showAddItem = (title) => {
-    const itemTitle = dataInfo.find((i) => i.title === title);
-    setSearchTitle(itemTitle);
-    setShowModal(true);
+  const handleShowAddItem = (title) => {
+    const itemTitle = data.find((i) => i.title === title);
+    setSearchItem(itemTitle);
+    setShowAddItem(true);
   }
 
   return (
@@ -31,13 +31,13 @@ function App() {
       <main className="h-full w-full min-h-screen bg-gray-100 font-sans flex flex-col items-center">
        <Header />
        <CantItems count={count} />
-       {showModal &&
-        <AddItem searchTitle={searchTitle} dataInfo={dataInfo} setDataInfo={setDataInfo} setShowModal={setShowModal} /> }
+       {showAddItem &&
+        <AddItem searchItem={searchItem} data={data} setData={setData} setShowAddItem={setShowAddItem} /> }
         <section className="w-full max-w-4xl mb-auto grid grid-cols-1 md:grid-cols-3 gap-3">
           <List
-            dataInfo={dataInfo}
-            setDataInfo={setDataInfo}
-            show={showAddItem}
+            data={data}
+            setData={setData}
+            show={handleShowAddItem}
           />
         </section>
         <Footer />

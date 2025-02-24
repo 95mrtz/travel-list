@@ -1,10 +1,10 @@
 import { AiOutlinePlusCircle } from "react-icons/ai";
 
-const List = ({ dataInfo, setDataInfo, show }) => {
+const List = ({ data, setData, show }) => {
 
 
     const onChangeCheckbox = (title, name) => {
-        const itemTitle = dataInfo.find((i) => i.title === title);
+        const itemTitle = data.find((i) => i.title === title);
     
         if (itemTitle) {
           const updatedItems = itemTitle.items.map((i) => {
@@ -14,20 +14,20 @@ const List = ({ dataInfo, setDataInfo, show }) => {
             return i;
           });
     
-          const updatedData = dataInfo.map((data) => {
+          const updatedData = data.map((data) => {
             if (data.title === title) {
               return { ...data, items: updatedItems };
             }
             return data;
           });
     
-          setDataInfo(updatedData);
+          setData(updatedData);
         }
       };
 
     return (
       <>
-        {dataInfo.map((items) => (
+        {data.map((items) => (
           <article key={items.title} className="pl-2 pr-2 flex flex-col gap-2">
             <article className="flex justify-between">
               <h2 className="text-xl font-bold">{items.title}</h2>
