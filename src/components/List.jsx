@@ -1,7 +1,21 @@
-import { AiOutlinePlusCircle } from "react-icons/ai";
+import { AiOutlinePlusCircle, AiOutlineDelete  } from "react-icons/ai";
 
-const List = ({ data, setData, show }) => {
+const List = ({ data, setData, show, showDeleteItem }) => {
+  
+  const deleteItem = (title, nameItem) => {
+    const itemsTitle = data.find((e) => e.title === title);
 
+    const updatedSection = itemsTitle.items.filter((item) => nameItem !== item.name);
+
+    const updatedData = data.map((data) => {
+      if (data.title === title) {
+        return { ...data, items: updatedSection };
+      }
+      return data;
+    });
+    setData(updatedData);
+
+  };
 
     const onChangeCheckbox = (title, name) => {
         const itemTitle = data.find((i) => i.title === title);
@@ -37,7 +51,8 @@ const List = ({ data, setData, show }) => {
             </article>
             <ul className="list-inside flex flex-col items-start gap-2">
               {items.items.map((item) => (
-                <li key={item.name} className="flex gap-2">
+                <li key={item.name} className="w-full flex justify-between items-center">
+                  <article className="flex gap-2">
                   <input
                     type="checkbox"
                     id={item.name}
@@ -47,6 +62,11 @@ const List = ({ data, setData, show }) => {
                     onChange={() => onChangeCheckbox(items.title, item.name)}
                   />
                   <label htmlFor={item.name}>{item.name}</label>
+                  </article>
+                  {showDeleteItem && 
+                  <button onClick={() => deleteItem(items.title, item.name)} className="py-1 px-2 flex justify-center items-center cursor-pointer shake">
+                    <AiOutlineDelete />
+                  </button> }
                 </li>
               ))}
             </ul>

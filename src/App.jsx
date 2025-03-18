@@ -11,6 +11,7 @@ function App() {
   const [data, setData] = useState(dataJSON);
   const [showAddItem, setShowAddItem] = useState(false);
   const [searchItem, setSearchItem] = useState("");
+  const [showDeleteItems, setShowDeleteItems] = useState(false);
 
   useEffect(() => {
     const checkedItems = data
@@ -31,6 +32,9 @@ function App() {
       <main className="h-full w-full min-h-screen bg-gray-100 font-sans flex flex-col items-center">
        <Header />
        <CantItems count={count} />
+       <section className="mb-5">
+               <button className="p-3 rounded-sm bg-gray-500 text-white uppercase font-bold" onClick={() => setShowDeleteItems(!showDeleteItems)}> {showDeleteItems ? "dejar de borrar items" : "borrar items"} </button>
+       </section>
        {showAddItem &&
         <AddItem searchItem={searchItem} data={data} setData={setData} setShowAddItem={setShowAddItem} /> }
         <section className="w-full max-w-4xl mb-auto grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -38,6 +42,7 @@ function App() {
             data={data}
             setData={setData}
             show={handleShowAddItem}
+            showDeleteItem={showDeleteItems}
           />
         </section>
         <Footer />

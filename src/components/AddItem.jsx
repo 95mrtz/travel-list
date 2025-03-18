@@ -42,7 +42,7 @@ const AddItem = ({ searchItem, data, setData, setShowAddItem }) => {
         </button>
         <button
           className="border-1 border-solid rounded-sm py-2 px-6 cursor-pointer"
-          onClick={() => setShowModal(false)}
+          onClick={() => setShowAddItem(false)}
         >
           cancelar
         </button>
